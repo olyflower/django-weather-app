@@ -8,6 +8,24 @@
     <title>Weather App</title>
 </head>
 <body>
- <p>Hello</p>
+ <form method="post">
+     {% csrf_token %}
+     <label>
+         <input type="text" name="city" placeholder="City" required >
+     </label>
+     <button type="submit">Get weather!</button>
+
+ </form>
+
+ {% if current_weather %}
+     <h1>{{ current_weather.city }}</h1>
+     <p>{{ current_weather.temperature }}</p>
+     <p>{{ current_weather.feels_like }}</p>
+     <p>{{ current_weather.pressure }}</p>
+     <p>{{ current_weather.wind }}</p>
+     <p>{{ current_weather.description }}</p>
+     <img src="http://openweathermap.org/img/wn/{{ current_weather.icon }}.png" alt="Weather Icon">
+
+ {% endif %}
 </body>
 </html>

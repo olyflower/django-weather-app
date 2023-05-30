@@ -2,19 +2,27 @@ import requests
 
 from django.conf import settings
 from django.shortcuts import render
+from django.views.generic import ListView
+
+from weather.models import City
 
 
 def index(request):
     api_key = settings.API_KEY
     url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+    cities = City.objects.all()
 
     if request.method == "POST":
         city = request.POST["city"]
         current_weather = get_weather(city, api_key, url)
-        context = {"current_weather": current_weather, }
+        context = {"current_weather": current_weather,
+                   "cities": cities,
+                   }
         return render(request, "../templates/index.html", context)
-    else:
-        return render(request, "../templates/index.html")
+    context = {
+            "cities": cities,
+        }
+    return render(request, "../templates/index.html", context)
 
 
 def get_weather(city, api_key, url):

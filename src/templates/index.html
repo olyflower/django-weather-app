@@ -8,6 +8,14 @@
     <title>Weather App</title>
 </head>
 <body>
+
+<h2>Cities:</h2>
+    <ul>
+        {% for city in cities %}
+        <li>{{ city.name }} ({{ city.country }})</li>
+        {% endfor %}
+    </ul>
+
  <form method="post">
      {% csrf_token %}
      <label>

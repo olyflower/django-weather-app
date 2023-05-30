@@ -2,7 +2,6 @@ import requests
 
 from django.conf import settings
 from django.shortcuts import render
-from django.views.generic import ListView
 
 from weather.models import City
 
@@ -15,7 +14,8 @@ def index(request):
     if request.method == "POST":
         city = request.POST["city"]
         current_weather = get_weather(city, api_key, url)
-        context = {"current_weather": current_weather,
+        context = {
+                   "current_weather": current_weather,
                    "cities": cities,
                    }
         return render(request, "../templates/index.html", context)

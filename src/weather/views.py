@@ -14,19 +14,31 @@ def index(request):
     if request.method == "POST":
         city = request.POST["city"]
         current_weather = get_weather(city, api_key, url)
-        context = {
-                   "current_weather": current_weather,
-                   "cities": cities,
-                   }
-        return render(request, "../templates/index.html", context)
+
+        if current_weather is None:
+            message = "City not found! Please enter a valid city name."
+            context = {
+                "message": message,
+                "cities": cities,
+            }
+        else:
+            context = {
+                "current_weather": current_weather,
+                "cities": cities,
+            }
+
+        return render(request, "index.html", context)
+
     context = {
-            "cities": cities,
-        }
-    return render(request, "../templates/index.html", context)
+        "cities": cities,
+    }
+    return render(request, "index.html", context)
 
 
 def get_weather(city, api_key, url):
     response = requests.get(url.format(city, api_key)).json()
+    if response["cod"] == "404":
+        return None
     weather_data = {
         "city": city,
         "temperature": round(response["main"]["temp"] - 273.15),

@@ -6,7 +6,7 @@ class City(models.Model):
     country = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.country})"
 
     class Meta:
         verbose_name_plural = "Cities"

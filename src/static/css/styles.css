@@ -2,50 +2,82 @@
 	margin: 0;
 	padding: 0;
 }
-
+html {
+	font-family: 'Ubuntu';
+	sans-serif;
+	background-color: #d6e5b7;
+}
 body {
-    background-color: #d6e5b7;
-    }
-
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
 header {
-	padding: 25px;
+	padding: 10px;
 	margin: auto;
 	text-align: center;
-
 }
-main, footer {
-	         margin: auto;
-	         text-align: center;
-        }
-
+main {
+	margin: auto;
+	text-align: center;
+}
 .cities-list li {
-  display: inline-block;
-  margin-right: 10px;
+	display: inline-block;
+	margin-right: 10px;
+}
+.cities {
+	max-width: 600px;
+	margin: auto;
+}
+.for-cities {
+	margin-bottom: 20px;
+}
+.cities-title {
+	margin-bottom: 20px;
 }
 
+.forecast-section p,
+.forecast-section span,
+.forecast-section h1{
+	margin-bottom: 10px;
+}
+.forecast-section {
+	margin: auto;
+	max-width: 600px;
+    border: 2px solid #1d4813;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
 form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 label {
-        margin-bottom: 10px;
-    }
+	margin-bottom: 15px;
+}
 
 input[type="text"] {
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
+	padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-    }
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
 button:hover {
-        background-color: #45a049;
-    }
+	background-color: #45a049;
+}
+
+footer {
+	bottom: 0;
+  	padding: 10px;
+  	text-align: center;
+  	font-size: 12px;
+}
